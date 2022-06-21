@@ -1,0 +1,125 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui" template="/WEB-INF/template.xhtml">
+
+	<ui:define name="content">
+
+	<div class="card">
+
+		<h:form id="form">
+
+			<p:growl id="msgs" showDetail="true" skipDetailIfEqualsSummary="true" />
+
+			<p:panelGrid columns="2" layout="grid"
+				styleClass="showcase-text-align-center">
+
+				<f:facet name="header">
+					<h:outputLabel value="ChartsJS from Java"
+						style="font-color:white;font-size:20px;" />
+				</f:facet>
+
+
+				<p:card>
+					<f:facet name="header">
+						<p:donutChart id="donutChartID"
+							model="#{donutChartView.donutModel}" />
+					</f:facet>
+					<f:facet name="title">
+			        Donut Chart
+			    </f:facet>
+					<f:facet name="subtitle">
+			        Pie chart or Circle chart
+			    </f:facet>
+
+					<p>A pie chart (or a circle chart) is a circular statistical
+						graphic, which is divided into slices to illustrate numerical
+						proportion. In a pie chart, the arc length of each slice (and
+						consequently its central angle and area), is proportional to the
+						quantity it represents. While it is named for its resemblance to a
+						pie which has been sliced, there are variations on the way it can
+						be presented. The earliest known pie chart is generally credited
+						to William Playfair's Statistical Breviary of 1801</p>
+
+				</p:card>
+
+
+
+				<p:card>
+					<f:facet name="header">
+						Controll
+					</f:facet>
+
+					<p>You can change all</p>
+
+
+					<h5 class="p-mt-0">Animation Rotate</h5>
+					<p:selectBooleanButton onLabel="Yes" offLabel="No"
+						value="#{donutChartView.animateRotate}" onIcon="pi pi-check"
+						offIcon="pi pi-times" style="width:6rem" />
+
+					<h5 class="p-mt-0">Animation Scale</h5>
+					<p:selectBooleanButton onLabel="Yes" offLabel="No"
+						value="#{donutChartView.animateScale}" onIcon="pi pi-check"
+						offIcon="pi pi-times" style="width:6rem" />
+
+					<h:panelGrid columns="3">
+						<h5>Animation Duration</h5>
+						<p:inputText value="#{donutChartView.animateDuration}"
+							style="width:55px;" />
+						<p:outputLabel
+							value="#{donutChartView.animateDuration} miliseconds" />
+
+						<h5>Border With</h5>
+						<p:inputText value="#{donutChartView.arcBorderWith}"
+							style="width:42px;" />
+						<p:outputLabel value="#{donutChartView.arcBorderWith} px" />
+
+						<h5>Border Color</h5>
+						<p:colorPicker value="#{donutChartView.arcBorderColor}" />
+						<h:outputText value="#{donutChartView.arcBorderColor}" />
+
+						<h5>Background Color</h5>
+						<p:colorPicker value="#{donutChartView.arcBackgroundColor}" />
+						<h:outputText value="#{donutChartView.arcBackgroundColor}" />
+					</h:panelGrid>
+
+					<h:panelGrid columns="5" style="margin: auto;">
+
+						<h:panelGrid columns="1" style="margin: auto;">
+							<h5>Cut Out Percent</h5>
+							<p:inputText id="txt4" value="#{donutChartView.cutoutPercentage}"
+								style="width:45px;" />
+							<p:slider for="txt4" type="vertical" style="width:45px;" />
+						</h:panelGrid>
+
+						<h:panelGrid columns="1" style="margin: auto;">
+							<h5>Circumference</h5>
+							<p:inputText id="txt3" value="#{donutChartView.circumference}"
+								style="width:48px;" />
+							<p:slider for="txt3" minValue="1.0" maxValue="6.4" step="0.1"
+								range="min" type="vertical" style="width:48px;" />
+						</h:panelGrid>
+
+					</h:panelGrid>
+
+
+					<f:facet name="footer">
+						<p:commandButton icon="pi pi-check" value="Show Changes"
+							action="#{donutChartView.buildModel}" update="form" />
+						<p:commandButton icon="pi pi-times" value="Reset"
+							styleClass="ui-button-secondary" style="margin-left: .5em" />
+					</f:facet>
+				</p:card>
+
+			</p:panelGrid>
+
+
+		</h:form>
+
+	</div>
+
+	</ui:define>
+
+</ui:composition>

@@ -1,0 +1,82 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui" template="/WEB-INF/template.xhtml">
+
+	<ui:define name="content">
+
+	<div class="card">
+
+		<h:form id="form">
+
+			<p:panelGrid columns="2" layout="grid"
+				styleClass="showcase-text-align-center">
+
+				<f:facet name="header">
+					<h:outputLabel value="ChartsJS from Java" style="font-color:white;font-size:20px;"/>
+				</f:facet>
+
+
+				<p:card>
+					<f:facet name="header">
+						<p:lineChart model="#{lineChartView.lineModel}" />
+					</f:facet>
+					<f:facet name="title">
+			        Line Chart
+			    </f:facet>
+					<f:facet name="subtitle">
+			        Line chart, Line plot or Line graph
+			    </f:facet>
+
+					<p>A line chart or line plot or line graph or curve chart[1] is
+						a type of chart which displays information as a series of data
+						points called 'markers' connected by straight line segments. It is
+						a basic type of chart common in many fields. It is similar to a
+						scatter plot except that the measurement points are ordered
+						(typically by their x-axis value) and joined with straight line
+						segments. A line chart is often used to visualize a trend in data
+						over intervals of time – a time series – thus the line is often
+						drawn chronologically. In these cases they are known as run
+						charts.</p>
+
+		
+				</p:card>
+
+
+
+				<p:card>
+					<f:facet name="header">
+						<p:lineChart model="#{scatterChartView.scatterModel}" />
+					</f:facet>
+					<f:facet name="title">
+			        Scatter Chart
+			    </f:facet>
+					<f:facet name="subtitle">
+			        Scatter plot, Scatter graph, Scattergram, or Scatter diagram
+			    </f:facet>
+
+					<p>A scatter plot (also called a scatterplot, scatter graph,
+						scatter chart, scattergram, or scatter diagram) is a type of plot
+						or mathematical diagram using Cartesian coordinates to display
+						values for typically two variables for a set of data. If the
+						points are coded (color/shape/size), one additional variable can
+						be displayed. The data are displayed as a collection of points,
+						each having the value of one variable determining the position on
+						the horizontal axis and the value of the other variable
+						determining the position on the vertical axis.</p>
+
+		
+				</p:card>
+
+			</p:panelGrid>
+
+
+		</h:form>
+
+	</div>
+	
+
+	</ui:define>
+
+</ui:composition>

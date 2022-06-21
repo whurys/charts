@@ -1,0 +1,95 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui" template="/WEB-INF/template.xhtml">
+
+	<ui:define name="content">
+	
+	<style type="text/css">
+	    .ui-panel, div.ui-state-hover {
+	        margin: 5px;
+	        width: 99%;
+	    }
+	
+	    .ui-dashboard-column {
+	        width: 25%;
+	    }
+	</style>
+	
+	<script type="text/javascript">
+    function skinRadarChart() {
+        Chart.defaults.startAngle = 36;
+        Chart.defaults.plugins.tooltip.cornerRadius = 3;
+        Chart.defaults.plugins.tooltip.enabled = true;
+        Chart.defaults.plugins.tooltip.mode = 'point';
+        Chart.defaults.plugins.tooltip.position = 'nearest';
+    }
+</script>
+	
+
+		<div class="card">
+
+			<h:form id="form">
+
+				<p:growl id="msgs" showDetail="true"
+					skipDetailIfEqualsSummary="true" />
+
+
+					<p:dashboard id="board" model="#{dashboardView.model}">
+						
+						<p:ajax event="reorder" listener="#{dashboardView.handleReorder}"
+							update="msgs" />
+
+						<p:panel id="sports" header="Sports">
+							<p:barChart model="#{barChartView.barModel}" />
+						</p:panel>
+
+						<p:panel id="finance" header="Finance">
+							<p:lineChart model="#{scatterChartView.scatterModel}" />
+						</p:panel>
+
+						<p:panel id="lifestyle" header="Lifestyle">
+							<p:barChart model="#{barChartView.barModel2}" />
+						</p:panel>
+
+						<p:panel id="weather" header="Weather"  >
+							<p:lineChart  model="#{lineChartView.lineModel}" />
+							<p:effect type="scale" event="click" for="weather">
+				                <f:param name="percent" value="150"/>
+				            </p:effect>
+						</p:panel>
+
+						<p:panel id="politics" header="Politics">
+							<p:barChart model="#{barChartView.hbarModel}" />
+						</p:panel>
+						
+						<p:panel id="politics2" header="Politics 2">
+							<p:barChart model="#{barChartView.stackedBarModel}" />
+						</p:panel>
+						
+						<p:panel id="politics3" header="Politics 3">
+							<p:barChart model="#{barChartView.stackedGroupBarModel}" />
+						</p:panel>
+						
+						<p:panel id="col1row3" header="Coluna 1 Linha 3">
+							 <p:radarChart model="#{radarChartView.radarModel}" />
+						</p:panel>
+						
+						<p:panel id="col1row4" header="Coluna 1 Linha 3">
+							 <p:radarChart model="#{radarChartView.radarModel2}" />
+						</p:panel>
+						
+						
+						
+					</p:dashboard>
+
+					<div style="clear: both" />
+		
+			</h:form>
+
+		</div>
+
+	</ui:define>
+
+</ui:composition>

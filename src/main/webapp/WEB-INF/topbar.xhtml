@@ -1,0 +1,35 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+
+	<h:form>
+
+		<!-- TOPBAR START -->
+		<div id="layout-topbar">
+
+			<p:megaMenu orientation="horizontal" autoDisplay="false">
+
+				<p:submenu label="Charts" icon="pi pi-fw pi-chart">
+					<p:column>
+						<p:submenu label="Charts">
+							<p:menuitem value="Line and Scatter" ajax="false"
+								url="#{request.contextPath}/charts/charts.xhtml?faces-redirect=true" />
+						</p:submenu>
+						
+						<p:submenu label="Dashboard">
+							<p:menuitem value="Dashboard 1" ajax="false"
+								url="#{request.contextPath}/charts/dashboard.xhtml?faces-redirect=true" />
+						</p:submenu>
+					</p:column>
+
+				</p:submenu>
+
+			</p:megaMenu>
+
+
+		</div>
+		<!-- TOPBAR END -->
+	</h:form>
+</ui:composition>
