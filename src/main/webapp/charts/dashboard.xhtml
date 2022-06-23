@@ -54,14 +54,7 @@
 						</p:panel>
 
 						<p:panel id="weather" header="Wheather"  >
-						 
-							<p:lineChart  id="chartID" model="#{lineChartView.multiLineModel}" />
-							<p:effect type="scale" event="click" for="weather">
-				                <f:param name="percent" value="150"/>
-				            </p:effect>
-				            
-				        
-				     
+							<p:lineChart model="#{lineChartView.multiLineModel}" />
 						</p:panel>
 
 						<p:panel id="politics" header="Politics">

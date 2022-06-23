@@ -8,7 +8,9 @@ import java.util.Random;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
+import javax.faces.bean.ViewScoped;
 
+import org.primefaces.component.linechart.LineChartRenderer;
 import org.primefaces.model.charts.ChartData;
 import org.primefaces.model.charts.axes.AxesGridLines;
 import org.primefaces.model.charts.axes.cartesian.CartesianScaleLabel;
@@ -22,7 +24,8 @@ import org.primefaces.model.charts.optionconfig.animation.Animation;
 import org.primefaces.model.charts.optionconfig.title.Title;
 
 @ManagedBean(name = "lineChartView")
-@SessionScoped
+//@SessionScoped
+@ViewScoped
 public class LineChartView {
 
 	private LineChartModel lineModel;
@@ -32,55 +35,62 @@ public class LineChartView {
 	private Map<String, List<Object>> mapValues = new LinkedHashMap<>();
 	
 	private List<Object> values1 = new ArrayList<>();
+	private List<Object> values2 = new ArrayList<>();
+	private List<Object> values3 = new ArrayList<>();
+	private List<Object> values4 = new ArrayList<>();
+	private List<Object> values5 = new ArrayList<>();
+	private List<Object> values6 = new ArrayList<>();
 
 	
 
 	public LineChartView() {
 		createLineModel();
 
-		Map<String, List<Object>> map = new LinkedHashMap<>();
-
-		List<String> labels = new ArrayList<>();
-		labels.add("0");
-		labels.add("February");
-		labels.add("March");
-		labels.add("April");
-		labels.add("May");
-		labels.add("June");
-		labels.add("July");
-
-		List<Object> values1 = new ArrayList<>();
-		values1.add(0);
-		values1.add(59);
-		values1.add(80);
-		values1.add(81);
-		values1.add(56);
-		values1.add(55);
-		values1.add(40);
-
-		List<Object> values2 = new ArrayList<>();
-		values2.add(63);
-		values2.add(53);
-		values2.add(85);
-		values2.add(90);
-		values2.add(50);
-		values2.add(53);
-		values2.add(12);
+//		Map<String, List<Object>> map = new LinkedHashMap<>();
+//
+//		List<String> labels = new ArrayList<>();
+//		labels.add("0");
+//		labels.add("February");
+//		labels.add("March");
+//		labels.add("April");
+//		labels.add("May");
+//		labels.add("June");
+//		labels.add("July");
+//
+//		List<Object> values1 = new ArrayList<>();
+//		values1.add(0);
+//		values1.add(59);
+//		values1.add(80);
+//		values1.add(81);
+//		values1.add(56);
+//		values1.add(55);
+//		values1.add(40);
+//
+//		List<Object> values2 = new ArrayList<>();
+//		values2.add(63);
+//		values2.add(53);
+//		values2.add(85);
+//		values2.add(90);
+//		values2.add(50);
+//		values2.add(53);
+//		values2.add(12);
+//		
+//		List<Object> values3 = new ArrayList<>();
+//		values3.add(10);
+//		values3.add(20);
+//		values3.add(32);
+//		values3.add(45);
+//		values3.add(50);
+//		values3.add(53);
+//		values3.add(67);
+//
+//		map.put("Linha 1", values1);
+//		map.put("Linha 2", values3);
+//		map.put("Linha 3", values2);
+//
+//		createLineModel(labels, map);
 		
-		List<Object> values3 = new ArrayList<>();
-		values3.add(10);
-		values3.add(20);
-		values3.add(32);
-		values3.add(45);
-		values3.add(50);
-		values3.add(53);
-		values3.add(67);
-
-		map.put("Linha 1", values1);
-		map.put("Linha 2", values3);
-		map.put("Linha 3", values2);
-
-		createLineModel(labels, map);
+		testPool();
 		
 		
 
@@ -262,6 +272,9 @@ public class LineChartView {
 
 		multiLineModel = new LineChartModel();
 		ChartData data = new ChartData();
+		
+		
+
 
 		mapValues.forEach((lineName, values) -> {
 
@@ -270,8 +283,11 @@ public class LineChartView {
 			dataSet.setData(values);
 			dataSet.setFill(false);
 			
-			dataSet.setLabel(lineName);
-			dataSet.setBorderColor(randomLightRGB());
+			String[] split = lineName.split(":");
+			
+			
+			dataSet.setLabel(split[0]);
+			dataSet.setBorderColor(split[1]);
 			
 			data.addChartDataSet(dataSet);
 
@@ -307,14 +323,28 @@ public class LineChartView {
 		
 		labels.add(""+numberCount);
 		values1.add(rangeMinMax(-10, 10));
+		values2.add(rangeMinMax(-8, 7));
+		values3.add(rangeMinMax(-10, 10));
+		values4.add(rangeMinMax(-8, 7));
+		values5.add(rangeMinMax(-10, 10));
+		values6.add(rangeMinMax(-8, 7));
 		
 		if(labels.size() >= 20) {
 			labels.remove(0);
 			values1.remove(0);
-			
+			values2.remove(0);
+			values3.remove(0);
+			values4.remove(0);
+			values5.remove(0);
+			values6.remove(0);
 		}
 		
-		mapValues.put("Dynamic Data", values1);
+		mapValues.put("DD 1:rgb(5, 19, 192)", values1);
+		mapValues.put("DD 2:rgb(75, 192, 192)", values2);
+		mapValues.put("DD 3:rgb(55, 19, 19)", values3);
+		mapValues.put("DD 4:rgb(75, 192, 92)", values4);
+		mapValues.put("DD 5:rgb(5, 119, 192)", values5);
+		mapValues.put("DD 6:rgb(75, 12, 192)", values6);
 		
 		createMultiLineModel();
 		System.out.println("Finish Pool "+numberCount);
