@@ -53,11 +53,15 @@
 							<p:barChart model="#{barChartView.barModel2}" />
 						</p:panel>
 
-						<p:panel id="weather" header="Weather"  >
-							<p:lineChart  model="#{lineChartView.lineModel}" />
+						<p:panel id="weather" header="Wheather"  >
+						 
+							<p:lineChart  id="chartID" model="#{lineChartView.multiLineModel}" />
 							<p:effect type="scale" event="click" for="weather">
 				                <f:param name="percent" value="150"/>
 				            </p:effect>
+				            
+				        
+				     
 						</p:panel>
 
 						<p:panel id="politics" header="Politics">
@@ -85,6 +89,9 @@
 					</p:dashboard>
 
 					<div style="clear: both" />
+					
+					<p:poll interval="1" listener="#{lineChartView.testPool}" update="chartID"/>
+				
 		
 			</h:form>
 
