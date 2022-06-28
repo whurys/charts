@@ -6,7 +6,7 @@
 
 	<!-- By default go to secured welcome page -->
 	<welcome-file-list>
-		<welcome-file>/charts/charts.xhtml</welcome-file>
+		<welcome-file>/charts/charts/dashboard.xhtml</welcome-file>
 	</welcome-file-list>
 
 	<context-param>
